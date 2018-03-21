@@ -14,10 +14,10 @@ gulp.task("watch",function(){
     });
     watch("./app/assets/styles/**/*.css",function(){
         gulp.start('cssInject');
-        browserSync.reload();
     });
+
 });
 
 gulp.task('cssInject',['styles'],function(){
-    return gulp.src('./app/assets/styles/styles.css').pipe(browserSync.stream());
+    return gulp.src('./app/assets/styles/styles.css').pipe(browserSync.stream().reload());
  });
