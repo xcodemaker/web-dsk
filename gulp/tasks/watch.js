@@ -13,8 +13,11 @@ gulp.task("watch",function(){
         browserSync.reload();
     });
     watch("./app/assets/styles/**/*.css",function(){
-        gulp.start('cssInject');
+        //gulp.start('cssInject');
         gulp.start('refresh');
+    });
+    watch("./app/assets/scripts/**/*.js",function(){
+        gulp.start('scriptsRefresh');
     });
 
 });
@@ -25,4 +28,8 @@ gulp.task('refresh',['cssInject'],function(){
 
 gulp.task('cssInject',['styles'],function(){
     return gulp.src('./app/assets/styles/styles.css').pipe(browserSync.stream());
+ });
+
+ gulp.task('scriptsRefresh',['scripts'],function(){
+    browserSync.reload();
  });
