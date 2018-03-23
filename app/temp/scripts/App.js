@@ -11105,6 +11105,10 @@ var _StickyHeader = __webpack_require__(5);
 
 var _StickyHeader2 = _interopRequireDefault(_StickyHeader);
 
+var _Modal = __webpack_require__(7);
+
+var _Modal2 = _interopRequireDefault(_Modal);
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 //var Person=require('./modules/Person'); webpack method importing class
@@ -11127,6 +11131,7 @@ var mobileMenu = new _MobileMenu2.default();
 new _RevealOnScroll2.default($(".feature-item"), "85%");
 new _RevealOnScroll2.default($(".testimonial"), "65%");
 var stickyHeader = new _StickyHeader2.default();
+var modal = new _Modal2.default();
 
 /***/ }),
 /* 3 */
@@ -11703,6 +11708,72 @@ var __WEBPACK_AMD_DEFINE_FACTORY__, __WEBPACK_AMD_DEFINE_ARRAY__, __WEBPACK_AMD_
 }));
 
 
+
+/***/ }),
+/* 7 */
+/***/ (function(module, exports, __webpack_require__) {
+
+"use strict";
+
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+var $ = __webpack_require__(0);
+
+var Modal = function () {
+    function Modal() {
+        _classCallCheck(this, Modal);
+
+        this.openModalButton = $('.open-modal');
+        this.modal = $('.modal');
+        this.closeModalButton = $('.modal__close');
+        this.event();
+    }
+
+    _createClass(Modal, [{
+        key: 'event',
+        value: function event() {
+            // clicking the modal button
+
+            this.openModalButton.click(this.openModal.bind(this));
+
+            //clicking the x close button
+
+            this.closeModalButton.click(this.closeModal.bind(this));
+
+            //pushes the any key
+            $(document).keyup(this.keyPressHandler.bind(this));
+        }
+    }, {
+        key: 'keyPressHandler',
+        value: function keyPressHandler(e) {
+            if (e.KeyCode == 27) {
+                this.closeModal();
+            }
+        }
+    }, {
+        key: 'openModal',
+        value: function openModal() {
+            this.modal.addClass('modal--is-visible');
+            return false;
+        }
+    }, {
+        key: 'closeModal',
+        value: function closeModal() {
+            this.modal.removeClass('modal--is-visible');
+        }
+    }]);
+
+    return Modal;
+}();
+
+exports.default = Modal;
 
 /***/ })
 /******/ ]);
