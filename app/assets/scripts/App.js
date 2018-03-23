@@ -1,5 +1,5 @@
 //var Person=require('./modules/Person'); webpack method importing class
-// var $=require('jquery');
+var $=require('jquery');
 // import Person from './modules/Person';//es6 way of import
 // class Adult extends Person{
 //     payTaxes(){
@@ -14,5 +14,9 @@
 // jane.payTaxes();
 
 import MobileMenu from './modules/MobileMenu';
+import RevealOnScroll from './modules/RevealOnScroll';
 
 var mobileMenu= new MobileMenu();
+
+new RevealOnScroll($(".feature-item"),"85%");
+new RevealOnScroll($(".testimonial"),"65%");
